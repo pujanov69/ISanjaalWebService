@@ -1,0 +1,53 @@
+#########Default Configuration Properties ##########
+spring:
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 200MB
+      max-request-size: 200MB
+      
+server:
+  port: 9696
+---  
+######## Dev Configuration Properties ########
+spring:
+  profiles: dev
+  datasource:
+     jdbc-url: jdbc:mysql://localhost:3306/isanjaal?serverTimezone=UTC
+     username: root
+     password: root
+     useSSL: false
+     driver-class-name: com.mysql.jdbc.Driver
+debug: true
+logging:
+  loggin:
+    level:
+      root: ERROR
+  file: /isanjaal/ishani/isanjaal-webservice.log
+webservice:
+  host-url: http://localhost:9191
+com:
+  isanjaal:
+    fileUploadingDirectory: /isanjaal/ishani/Pictures/
+---    
+          
+######## Production Configuration Properties ########
+spring:
+  profiles: prod
+  datasource:
+     jdbc-url: jdbc:mysql://localhost:3306/isanjaal
+     username: root
+     password: ENC(4VxqTwB72fx6aJVELbmsDEtGJh5INltM)
+     useSSL: false
+     driver-class-name: com.mysql.jdbc.Driver
+
+logging:
+  loggin:
+    level:
+      root: ERROR
+  file: /home/isanjaal/logs/isanjaal-rest-api.log
+webservice:
+  host-url: http://103.233.58.121
+com:
+  isanjaal:
+    fileUploadingDirectory: /home/isanjaal/ishani/Pictures/          
